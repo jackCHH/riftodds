@@ -5,7 +5,7 @@ require 'uri'
 class RiotApi
 
 	BASE_URL = "https://na.api.pvp.net"
-	API_KEY = ENV["riot_api_key"]
+	API_KEY = "?api_key=4ac9d17c-8e89-44d9-99cd-cb806bd078b9"
 
 	def get_summoner_id(name)
 		summoner_url = "#{BASE_URL}/api/lol/na/v1.4/summoner/by-name/#{name}#{API_KEY}" 

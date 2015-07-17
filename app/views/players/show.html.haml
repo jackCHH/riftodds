@@ -1,11 +1,25 @@
-= @player.p1
 %p
 	In any given ranked game, the probability of 
 	%b= @player.p1
 	winning with
 	%b= @player.c1
+	= image_tag "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{@player.c1}.png"
 	is
 	= Player.determine_champion_probability(@player.p1, @player.c1)
+	percent
+
+%p
+	In any given ranked game, the probability of 
+	%b= @player.p2
+	winning with
+	%b= @player.c2
+	= image_tag "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/#{@player.c2}.png"
+	is
+	= Player.determine_champion_probability(@player.p2, @player.c2)
+	percent
+
+
+
 
 
 

@@ -1,9 +1,10 @@
 class Player < ActiveRecord::Base
 
+	require 'riotapi'
+
+
 	before_save :downcase_players
 	before_save :mod_champ_save
-
-	require 'riotapi'
 
 	# returns the player id
 	def self.return_id(name)
@@ -48,19 +49,27 @@ class Player < ActiveRecord::Base
 			total_won = player_stat["totalSessionsWon"]
 
 			winrate = (total_won.to_f / total_played.to_f)
-			winrate.round(2)
+			winrate.round(2) * 100
 
 		else
-			winrate = 0.5
+			winrate = 0.5 * 100
 		end
 
 	end
 
 
+	def self.get_champion_art(champ_name)
+		picture = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/#{champ_name}_0.jpg"
+		picture
+		
+	end
+
+	private
 
 	#downcase the players name before saving
 	def downcase_players
 		self.p1.downcase!
+		self.p2.downcase!
 
 
 	end
@@ -70,6 +79,8 @@ class Player < ActiveRecord::Base
 		#downcase all letters
 		#split the word first. capitalize each individual word. Join them back with no spaces in between. 
 		self.c1 = c1.split.map(&:capitalize).join('')
+		self.c2 = c2.split.map(&:capitalize).join('')
+
 
 
 	end
