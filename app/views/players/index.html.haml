@@ -1,0 +1,14 @@
+%h1 Hello World
+%h1 New Post
+= form_for :player, url: players_path do |f|
+  = f.label :p1
+  %br/
+  = f.text_field :p1
+  %br/
+  %br/
+
+  = f.label :c1
+  %br/
+  = f.text_field :c1
+
+  = f.submit
