@@ -2,8 +2,6 @@ class PlayersController < ApplicationController
 
 	require 'riotapi'
 
-	caches_action :get_champion
-
 	def index
 		
 	end
